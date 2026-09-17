@@ -4,7 +4,7 @@ from .config import KAFKA_BROKER_URL, APP_ID
 app = faust.App(
     APP_ID,
     broker=KAFKA_BROKER_URL,
-    store="rocksdb://",  # персистентное хранилище — данные таблиц пишутся на диск
+    store="memory://",  # персистентное хранилище — данные таблиц пишутся на диск
 )
 
 # Импортируем после создания app, а не в начале файла — иначе

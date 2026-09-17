@@ -36,7 +36,6 @@ services:
       kafka:
         condition: service_healthy
     entrypoint: ["/bin/sh", "-c"]
-
     command: 
       - >
         /opt/kafka/bin/kafka-topics.sh --create --if-not-exists --bootstrap-server kafka:9092 --topic messages --partitions 1 --replication-factor 1 &&
