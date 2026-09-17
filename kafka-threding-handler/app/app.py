@@ -12,7 +12,7 @@ app = faust.App(
 # `from .app import app`, а сам app.py всё ещё в процессе загрузки).
 
 
-from . import tables, agents
+from . import tables, agents, producer  # noqa: E402,F401
 
 if __name__ == "__main__":
     app.main()
