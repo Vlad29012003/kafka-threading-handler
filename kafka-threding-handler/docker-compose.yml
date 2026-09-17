@@ -7,7 +7,7 @@ services:
     container_name: kafka
 
     healthcheck:
-      test: ["CMD-SHELL", "/otp/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092 || exit 1"]
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092 || exit 1"]
 
     ports:
       - "9094:9094"
