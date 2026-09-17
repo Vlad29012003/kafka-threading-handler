@@ -36,3 +36,14 @@ class BlockCommand(faust.Record, serializer="json"):
     blocker_id: str
     blocked_id: str
     is_blocked: bool = True
+
+
+class BannedWordCommand(faust.Record, serializer="json"):
+    """
+    Событие изменения списка запрещённых слов.
+    is_banned=True  -> добавить слово в список запрещённых
+    is_banned=False -> убрать слово из списка (разрешить обратно)
+    """
+
+    word: str
+    is_banned: bool = True

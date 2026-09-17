@@ -1,8 +1,8 @@
-from .models import Message, BlockCommand
+from .models import Message, BlockCommand, BannedWordCommand
 
 import time
 from .app import app
-from .agents import messages_topic, blocked_users_topic, filtered_messages_topic
+from .agents import messages_topic, blocked_users_topic, banned_words_topic
 import asyncio
 
 
@@ -12,6 +12,14 @@ async def main():
     await blocked_users_topic.send(
         value=BlockCommand(blocker_id="user_2", blocked_id="user_1", is_blocked=True)
     )
+
+    await banned_words_topic.send(
+        value=BannedWordCommand(
+            word="урод",
+            is_banned=True,
+        )
+    )
+
     await asyncio.sleep(2)
 
     # 2. user_1 пишет user_2 — должно быть отфильтровано (не попасть в filtered_messages)
@@ -20,6 +28,15 @@ async def main():
             user_id="user_1",
             recipient_id="user_2",
             message="Привет",
+            timestamp=time.time(),
+        )
+    )
+
+    await messages_topic.send(
+        value=Message(
+            user_id="user_3",
+            recipient_id="user_4",
+            message="Ты урод",
             timestamp=time.time(),
         )
     )

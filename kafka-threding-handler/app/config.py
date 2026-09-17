@@ -26,6 +26,9 @@ TOPIC_MESSAGES = "messages"
 TOPIC_FILTERED_MESSAGES = "filtered_messages"
 TOPIC_BLOCKED_USERS = "blocked_users"
 
+TOPIC_BANNED_WORDS = "banned_words"
+
+
 # Имя Faust-приложения. Faust использует его как префикс для служебных
 # топиков (changelog-топики table, топики repartition и т.д.), поэтому
 # должно быть стабильным и уникальным для проекта.
